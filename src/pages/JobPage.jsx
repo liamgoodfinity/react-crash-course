@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import { FaMapMarker } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const JobPage = ({ deleteJob }) => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const JobPage = ({ deleteJob }) => {
     if (confirm) {
       console.log("Deleting job with id:", jobId);
       deleteJob(jobId);
+      toast.success("Job deleted successfully");
       return navigate('/jobs');
     } else {
       console.log("Deletion canceled");
